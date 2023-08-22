@@ -1,0 +1,65 @@
+{{> head }}
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top header-bg-dark">
+        <div class="container">
+           
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<section class="showcase">
+    <div class="container">
+        <div class="pb-2 mt-4 mb-2 border-bottom">
+            <h2>Note dinamiche con MongoDB/Mongoose, Express, Handlebars</h2> <a class="btn btn-info float-right btn-sm" href="/"> Nuova nota</a></h2>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Cognome</th>
+                            <th>Email</th>
+                            <th>Telefono</th>
+                            <th>Indirizzo</th>
+                            <th>Testo</th>
+                            <th>Anni</th>
+                            <th>Azioni</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each notalist}}
+                        <tr>
+                            <td>{{this.name}}</td>
+                            <td>{{this.surname}}</td>
+                            <td>{{this.email}}</td>
+                            <td>{{this.mobile}}</td>
+                            <td>{{this.address}}</td>
+                            <td>{{this.text}}</td>
+                            <td>{{this.age}}</td>
+                            <td>
+                                <a href="/{{this._id}}">Edit</a>
+                                <a href="/delete/{{this._id}}" onclick="return confirm('Vuoi davvero cancellare?');">Cancella</a>
+                            </td>
+                        </tr>
+                       {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{{> footer }}
